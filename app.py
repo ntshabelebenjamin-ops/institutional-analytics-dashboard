@@ -34,6 +34,13 @@ st.write(
 df = pd.read_excel("Faculty Enrolment.xlsx")
 
 # ---------------------------------------------------
+# CONVERT RATES TO PERCENTAGES
+# ---------------------------------------------------
+
+df["SuccessRate"] = df["SuccessRate"] * 100
+df["DropoutRate"] = df["DropoutRate"] * 100
+
+# ---------------------------------------------------
 # EXECUTIVE KPI SECTION
 # ---------------------------------------------------
 
@@ -44,13 +51,13 @@ col1, col2, col3, col4, col5 = st.columns(5)
 with col1:
     st.metric(
         "Total Enrolments",
-        int(df["ActualHeadcount"].sum())
+        f"{int(df['ActualHeadcount'].sum()):,}"
     )
 
 with col2:
     st.metric(
         "Total Graduates",
-        int(df["Graduates"].sum())
+        f"{int(df['Graduates'].sum()):,}"
     )
 
 with col3:
@@ -62,7 +69,7 @@ with col3:
 with col4:
     st.metric(
         "Research Outputs",
-        round(df["ResearchOutputUnits"].sum(), 2)
+        f"{round(df['ResearchOutputUnits'].sum(), 2):,}"
     )
 
 with col5:
@@ -106,6 +113,10 @@ fig1 = px.line(
     title="Enrolment Trends"
 )
 
+fig1.update_layout(
+    yaxis_tickformat=","
+)
+
 st.plotly_chart(fig1, use_container_width=True)
 
 st.info(
@@ -134,6 +145,10 @@ fig2 = px.bar(
     title="Graduate Output Trends"
 )
 
+fig2.update_layout(
+    yaxis_tickformat=","
+)
+
 st.plotly_chart(fig2, use_container_width=True)
 
 # ---------------------------------------------------
@@ -151,6 +166,10 @@ fig3 = px.bar(
     x="Faculty",
     y="SuccessRate",
     title="Average Success Rate by Faculty"
+)
+
+fig3.update_layout(
+    yaxis_title="Success Rate (%)"
 )
 
 st.plotly_chart(fig3, use_container_width=True)
@@ -171,6 +190,10 @@ fig4 = px.line(
     y="ResearchOutputUnits",
     markers=True,
     title="Research Output Trends"
+)
+
+fig4.update_layout(
+    yaxis_tickformat=","
 )
 
 st.plotly_chart(fig4, use_container_width=True)
@@ -197,9 +220,9 @@ variance = actual_total - approved_total
 
 st.subheader("DHET Enrolment Planning Variance")
 
-st.write(f"Actual Enrolments: {int(actual_total)}")
-st.write(f"Approved Plan Enrolments: {int(approved_total)}")
-st.write(f"Variance: {int(variance)}")
+st.write(f"Actual Enrolments: {int(actual_total):,}")
+st.write(f"Approved Plan Enrolments: {int(approved_total):,}")
+st.write(f"Variance: {int(variance):,}")
 
 if variance > 0:
     st.error(
@@ -303,6 +326,10 @@ forecast_results = pd.DataFrame({
     "Forecast Graduates": predictions.astype(int)
 })
 
+forecast_results["Year"] = (
+    forecast_results["Year"].astype(int)
+)
+
 st.subheader("Graduate Forecast")
 
 st.write(forecast_results)
@@ -313,6 +340,13 @@ fig5 = px.line(
     y="Forecast Graduates",
     markers=True,
     title="Forecast Graduate Outputs"
+)
+
+fig5.update_layout(
+    xaxis=dict(
+        tickmode='linear'
+    ),
+    yaxis_tickformat=","
 )
 
 st.plotly_chart(fig5, use_container_width=True)
@@ -333,15 +367,15 @@ st.header("Executive Institutional Insights")
 st.write(
     """
     Key Institutional Findings:
-    
+
     • Enrolment growth trends should be monitored alongside graduate productivity.
-    
+
     • Throughput efficiency remains critical for subsidy sustainability.
-    
+
     • Declining research outputs may weaken long-term institutional competitiveness.
-    
+
     • Capacity pressures and over-enrolment may create DHET compliance risks.
-    
+
     • Predictive analytics strengthens evidence-based planning and strategic decision-making.
     """
 )
