@@ -1,8 +1,10 @@
-# Institutional Analytics Dashboard
+# University of Pretoria Institutional Analytics Dashboard
 
 ## Overview
 
-This project is a Streamlit-based institutional analytics and executive decision-support dashboard developed for higher education strategic planning.
+This project presents a Streamlit-based Institutional Analytics and Executive Decision-Support Dashboard developed in response to a simulated higher education analytics assessment.
+
+The dashboard was designed within the strategic context of the University of Pretoria (UP) and demonstrates how institutional intelligence, predictive analytics, governance controls, and executive reporting can support evidence-based decision-making in a research-intensive university environment.
 
 The application integrates:
 - institutional performance analytics,
@@ -11,19 +13,30 @@ The application integrates:
 - predictive analytics,
 - and executive reporting.
 
-The dashboard was developed to support evidence-based decision-making within a higher education environment.
-
 ---
 
-# Objectives
+# Purpose of the Application
 
-The application demonstrates the ability to:
+The application was developed to demonstrate the ability to:
 
 - Analyse institutional performance
 - Identify strategic and funding risks
 - Apply data governance principles
 - Develop predictive analytics capability
-- Support executive reporting and strategic planning
+- Support executive-level reporting and planning
+
+---
+
+# Institutional Context
+
+As a research-intensive institution, the University of Pretoria operates within a complex higher education environment characterised by:
+- enrolment growth pressures,
+- DHET funding constraints,
+- postgraduate sustainability requirements,
+- research productivity expectations,
+- and infrastructure capacity challenges.
+
+This dashboard demonstrates how institutional analytics can support strategic planning and sustainability management within such an environment.
 
 ---
 
@@ -42,63 +55,69 @@ The application demonstrates the ability to:
 
 # Key Functionalities
 
-## 1. Executive Dashboard
-The dashboard presents high-level institutional KPIs including:
+## 1. Executive Institutional Dashboard
+
+The dashboard provides executive-level KPIs including:
 - Total enrolments
 - Graduate outputs
 - Success rates
 - Research outputs
 - Dropout rates
 
+These indicators support strategic institutional monitoring and executive reporting.
+
 ---
 
 ## 2. Institutional Performance Analytics
-The system analyses:
+
+The application analyses:
 - enrolment trends,
 - graduate productivity,
 - faculty performance,
 - success rates,
 - and research output trends.
 
-Interactive visualisations support strategic analysis.
+Interactive visualisations support institutional planning and strategic analysis.
 
 ---
 
 ## 3. Strategic and Funding Risk Analysis
-The dashboard identifies:
+
+The dashboard identifies potential institutional risks including:
 - DHET enrolment planning variance,
 - subsidy efficiency risks,
-- infrastructure capacity pressures,
-- and research sustainability risks.
+- infrastructure capacity pressure,
+- weak throughput performance,
+- and declining research sustainability.
+
+These analytics support proactive institutional management.
 
 ---
 
 ## 4. Data Governance Module
-Governance controls include:
-- missing value checks,
-- duplicate record checks,
-- and validation rules.
 
-These controls improve reporting integrity and decision-making reliability.
+The governance component includes:
+- missing value checks,
+- duplicate record validation,
+- and institutional data quality controls.
+
+Strong governance controls improve:
+- reporting credibility,
+- decision-making integrity,
+- and institutional accountability.
 
 ---
 
-## 5. Predictive Analytics
-The application uses Linear Regression forecasting to project:
+## 5. Predictive Analytics Capability
+
+The application applies Linear Regression modelling to forecast:
 - future graduate outputs.
 
-Predictive analytics supports:
-- institutional planning,
-- subsidy forecasting,
-- and sustainability management.
-
----
-
-# Forecasting Methodology
-
-The predictive analytics component applies:
-- Linear Regression modelling
-using historical graduate data.
+Forecasting supports:
+- strategic planning,
+- subsidy modelling,
+- resource allocation,
+- and sustainability analysis.
 
 Forecast outputs are generated for:
 - 2025,
@@ -107,13 +126,16 @@ Forecast outputs are generated for:
 
 ---
 
-# Strategic Value
+# Strategic Value to the University of Pretoria
 
-The application functions as an institutional intelligence platform supporting:
-- evidence-based decision-making,
-- executive planning,
-- strategic risk identification,
-- and sustainability monitoring.
+The application demonstrates how institutional intelligence systems can support the University of Pretoria in:
+- strengthening evidence-based planning,
+- improving throughput efficiency,
+- monitoring subsidy sustainability,
+- identifying institutional risks proactively,
+- and supporting executive decision-making.
+
+The dashboard aligns with modern higher education analytics approaches that integrate operational reporting with predictive and strategic intelligence.
 
 ---
 
@@ -123,12 +145,12 @@ The application functions as an institutional intelligence platform supporting:
 |---|---|
 | app.py | Main Streamlit application |
 | requirements.txt | Python package dependencies |
-| Faculty Enrolment.xlsx | Institutional dataset |
+| Faculty Enrolment.xlsx | Simulated institutional dataset |
 | README.md | Technical documentation |
 
 ---
 
-# Deployment
+# Deployment Environment
 
 The application is deployed using:
 - GitHub
@@ -138,4 +160,6 @@ The application is deployed using:
 
 # Conclusion
 
-The dashboard demonstrates how institutional analytics, predictive modelling, governance controls, and executive reporting can be integrated into a single higher education decision-support platform.
+The dashboard demonstrates how institutional analytics, governance controls, predictive modelling, and executive reporting can be integrated into a single higher education decision-support platform.
+
+The project reflects the growing importance of institutional intelligence systems in supporting sustainable, evidence-based decision-making within the South African higher education sector and specifically within research-intensive institutions such as the University of Pretoria.
