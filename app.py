@@ -143,56 +143,78 @@ st.info(
 # ENROLMENT MIX
 # ---------------------------------------------------
 
-st.subheader("Institutional Enrolment Mix")
+if "QualificationType" in df.columns:
 
-enrolment_mix = (
-    df.groupby("QualificationType")["ActualHeadcount"]
-    .sum()
-    .reset_index()
-)
+    st.subheader("Institutional Enrolment Mix")
 
-fig_mix = px.pie(
-    enrolment_mix,
-    names="QualificationType",
-    values="ActualHeadcount",
-    title="Enrolment Distribution by Qualification Type"
-)
+    enrolment_mix = (
+        df.groupby("QualificationType")["ActualHeadcount"]
+        .sum()
+        .reset_index()
+    )
 
-st.plotly_chart(fig_mix, use_container_width=True)
+    fig_mix = px.pie(
+        enrolment_mix,
+        names="QualificationType",
+        values="ActualHeadcount",
+        title="Enrolment Distribution by Qualification Type"
+    )
+
+    st.plotly_chart(fig_mix, use_container_width=True)
+
+else:
+
+    st.warning(
+        """
+        QualificationType column not found in dataset.
+        Enrolment mix analysis unavailable.
+        """
+    )
 
 # ---------------------------------------------------
 # QUALIFICATION ANALYSIS
 # ---------------------------------------------------
 
-st.header("Qualification Level Analysis")
+if "QualificationType" in df.columns:
 
-qualification_trend = (
-    df.groupby(["Year", "QualificationType"])["ActualHeadcount"]
-    .sum()
-    .reset_index()
-)
+    st.header("Qualification Level Analysis")
 
-fig_qualification = px.bar(
-    qualification_trend,
-    x="Year",
-    y="ActualHeadcount",
-    color="QualificationType",
-    barmode="group",
-    title="Undergraduate vs Postgraduate Enrolment Trends"
-)
+    qualification_trend = (
+        df.groupby(["Year", "QualificationType"])["ActualHeadcount"]
+        .sum()
+        .reset_index()
+    )
 
-fig_qualification.update_layout(
-    yaxis_tickformat=","
-)
+    fig_qualification = px.bar(
+        qualification_trend,
+        x="Year",
+        y="ActualHeadcount",
+        color="QualificationType",
+        barmode="group",
+        title="Undergraduate vs Postgraduate Enrolment Trends"
+    )
 
-st.plotly_chart(fig_qualification, use_container_width=True)
+    fig_qualification.update_layout(
+        yaxis_tickformat=","
+    )
 
-st.info(
-    """
-    Qualification mix influences subsidy generation,
-    postgraduate growth, and long-term research sustainability.
-    """
-)
+    st.plotly_chart(fig_qualification, use_container_width=True)
+
+    st.info(
+        """
+        Qualification mix influences subsidy generation,
+        postgraduate growth, and research sustainability.
+        """
+    )
+
+else:
+
+    st.warning(
+        """
+        QualificationType column not found in dataset.
+        Qualification analysis unavailable.
+        """
+    )
 
 # ---------------------------------------------------
 # GRADUATE TRENDS
